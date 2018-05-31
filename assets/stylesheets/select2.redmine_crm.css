@@ -1,0 +1,17 @@
+.select2-container--default .select2-selection--single {
+    background: #fff !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 8px !important;
+}
+
+#issue_deals_issue_attributes_deal_id + .select2-container--default .select2-selection--single,
+#deal_contact_id + .select2-container--default .select2-selection--single {
+    background: #fff url(../../redmine_crm/images/vcard.png) no-repeat 2px 50% !important;
+}
+
+#issue_deals_issue_attributes_deal_id + .select2-container--default .select2-selection--single .select2-selection__rendered,
+#deal_contact_id + .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 21px !important;
+}

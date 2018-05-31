@@ -18,15 +18,17 @@
     });
 
     // for all elements
-    $(document).click(function(event){
-        replaceAllSelect2();
-    });
-
-    // for all elements
     $(document).change(function(event){
         replaceAllSelect2();
     });
 
+    // for all elements
+    $(document).click(function(event){
+        if($(event.target)
+            && $(event.target).hasClass('toggle-multiselect')) {
+            replaceAllSelect2();
+        }
+    });
 
 }(jQuery));
 
@@ -36,28 +38,29 @@ function replaceAllSelect2(){
 
     for (i = 0; i < elements.length; i++) {
 
-        // For not woroking 「width:resolve」
+        if(elements[i].id == 'issue_deals_issue_attributes_deal_id'
+        || elements[i].id == 'deal_contact_id') {
+            continue;
+        }
+
+        if ($("#" + elements[i].id).data('select2')) {
+            $("#" + elements[i].id).select2('destroy');
+        }
+
         if(elements[i].id == 'year'
         || elements[i].id == 'month'
         || elements[i].id == 'columns'
         || elements[i].id == 'settings_issuequery_query_id'
         || elements[i].id == 'block-select'){
-
             $("#" + elements[i].id).select2({
                 width:"175px",
-                placeholder: "",
-                allowClear: true
             });
         }
         else {
-            // For All Pages
             $("#" + elements[i].id).select2({
-                width:"resolve",
-                placeholder: "",
-                allowClear: true
+                width:"resolve"
             });
         }
-
     }
 
 }
