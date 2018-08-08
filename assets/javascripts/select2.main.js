@@ -24,8 +24,10 @@
 
     // for all elements
     $(document).click(function(event){
-        if($(event.target)
-            && $(event.target).hasClass('toggle-multiselect')) {
+        if($(event.target) && (
+            $(event.target).hasClass('toggle-multiselect')
+            || $(event.target).hasClass('icon-edit')
+        )) {
             replaceAllSelect2();
         }
     });
