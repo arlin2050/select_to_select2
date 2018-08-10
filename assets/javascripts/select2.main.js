@@ -24,45 +24,50 @@
 
     // for all elements
     $(document).click(function(event){
-        if($(event.target) && (
-            $(event.target).hasClass('toggle-multiselect')
-            || $(event.target).hasClass('icon-edit')
-        )) {
-            replaceAllSelect2();
+        if($(event.target) && $(event.target).hasClass('toggle-multiselect')) {
+            replaceAllSelect2(true);
         }
     });
 
 }(jQuery));
 
-function replaceAllSelect2(){
-
+function replaceAllSelect2(force = false){
     var elements = document.getElementsByTagName("select");
 
     for (i = 0; i < elements.length; i++) {
 
         if(elements[i].id == 'issue_deals_issue_attributes_deal_id'
-        || elements[i].id == 'deal_contact_id') {
+        || elements[i].id == 'deal_contact_id'
+        || elements[i].id == 'available_c'
+        || elements[i].id == 'selected_c'
+        || elements[i].id == 'group_by') {
             continue;
         }
 
-        if ($("#" + elements[i].id).data('select2')) {
+        if (force && $("#" + elements[i].id).data('select2')) {
             $("#" + elements[i].id).select2('destroy');
         }
 
-        if(elements[i].id == 'year'
-        || elements[i].id == 'month'
-        || elements[i].id == 'columns'
-        || elements[i].id == 'settings_issuequery_query_id'
-        || elements[i].id == 'block-select'){
-            $("#" + elements[i].id).select2({
-                width:"175px",
-            });
-        }
-        else {
-            $("#" + elements[i].id).select2({
-                width:"resolve"
-            });
+        if (!$("#" + elements[i].id).data('select2')) {
+            if(elements[i].id == 'year'
+                || elements[i].id == 'month'
+                || elements[i].id == 'columns'
+                || elements[i].id == 'settings_issuequery_query_id'
+                || elements[i].id == 'block-select') {
+                $("#" + elements[i].id).select2({
+                    width: "175px",
+                });
+            } else if ($("#" + elements[i].id).css('width').endsWith("%")) {
+                $("#" + elements[i].id).select2({
+                    width: $("#" + elements[i].id).css('width'),
+                });
+            } else {
+                $("#" + elements[i].id).select2({
+                    width:"resolve",
+                });
+            }
         }
     }
 
 }
+
