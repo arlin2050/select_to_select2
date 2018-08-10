@@ -4,7 +4,7 @@ Redmine::Plugin.register :select_to_select2 do
   name 'Select To Select2 Plugin'
   author 'André Cardoso <acardoso@orupaca.fr>'
   description 'Replace Select Tag to Select2'
-  version '0.1.2'
+  version '0.1.3'
   url 'https://github.com/arlin2050/select_to_select2'
   author_url 'https://github.com/arlin2050'
 end

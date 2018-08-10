@@ -26,6 +26,8 @@
     $(document).click(function(event){
         if($(event.target) && $(event.target).hasClass('toggle-multiselect')) {
             replaceAllSelect2(true);
+        } else {
+            replaceAllSelect2();
         }
     });
 
@@ -35,12 +37,10 @@ function replaceAllSelect2(force = false){
     var elements = document.getElementsByTagName("select");
 
     for (i = 0; i < elements.length; i++) {
-
         if(elements[i].id == 'issue_deals_issue_attributes_deal_id'
         || elements[i].id == 'deal_contact_id'
         || elements[i].id == 'available_c'
-        || elements[i].id == 'selected_c'
-        || elements[i].id == 'group_by') {
+        || elements[i].id == 'selected_c') {
             continue;
         }
 
@@ -48,7 +48,8 @@ function replaceAllSelect2(force = false){
             $("#" + elements[i].id).select2('destroy');
         }
 
-        if (!$("#" + elements[i].id).data('select2')) {
+        var minWidth = parseInt($("#" + elements[i].id).css("min-width").replace(/px/, "").replace(/%/, ""));
+        if (!$("#" + elements[i].id).data('select2') && $("#" + elements[i].id).is(':visible')) {
             if(elements[i].id == 'year'
                 || elements[i].id == 'month'
                 || elements[i].id == 'columns'
@@ -57,14 +58,16 @@ function replaceAllSelect2(force = false){
                 $("#" + elements[i].id).select2({
                     width: "175px",
                 });
-            } else if ($("#" + elements[i].id).css('width').endsWith("%")) {
+            } else if ($("#" + elements[i].id).width() <= minWidth && minWidth > 0) {
+                $("#" + elements[i].id).select2({
+                    width: $("#" + elements[i].id).css('min-width'),
+                });
+            } else if ($("#" + elements[i].id).width() > 0) {
                 $("#" + elements[i].id).select2({
                     width: $("#" + elements[i].id).css('width'),
                 });
             } else {
-                $("#" + elements[i].id).select2({
-                    width:"resolve",
-                });
+                $("#" + elements[i].id).select2({width: 'resolve'});
             }
         }
     }
