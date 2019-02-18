@@ -40,7 +40,9 @@ function replaceAllSelect2(force = false){
         if(elements[i].id == 'issue_deals_issue_attributes_deal_id'
         || elements[i].id == 'deal_contact_id'
         || elements[i].id == 'available_c'
-        || elements[i].id == 'selected_c') {
+        || elements[i].id == 'selected_c'
+	|| elements[i].id == 'available_columns'
+	|| elements[i].id == 'selected_columns') {
             continue;
         }
 
