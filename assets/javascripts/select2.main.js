@@ -2,7 +2,7 @@
  Select To Select2 Plugin Main.
  */
 
-(function($){
+EASY.schedule.require(function($){
 
     // For Page Load
     replaceAllSelect2();
@@ -31,7 +31,7 @@
         }
     });
 
-}(jQuery));
+},'jQuery');
 
 function replaceAllSelect2(force = false){
     var elements = document.getElementsByTagName("select");
