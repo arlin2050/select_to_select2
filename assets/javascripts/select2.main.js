@@ -71,6 +71,8 @@ function replaceAllSelect2(force = false){
             } else {
                 $("#" + elements[i].id).select2({width: 'resolve'});
             }
+	
+	    $('.select2-dropdown').css({'zIndex':'1200'});
         }
     }
 
