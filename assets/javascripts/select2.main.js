@@ -42,7 +42,8 @@ function replaceAllSelect2(force = false){
         || elements[i].id == 'available_c'
         || elements[i].id == 'selected_c'
 	|| elements[i].id == 'available_columns'
-	|| elements[i].id == 'selected_columns') {
+	|| elements[i].id == 'selected_columns'
+	|| elements[i].id == 'time_entry_activity_id') {
             continue;
         }
 
@@ -71,8 +72,6 @@ function replaceAllSelect2(force = false){
             } else {
                 $("#" + elements[i].id).select2({width: 'resolve'});
             }
-	
-	    $('.select2-dropdown').css({'zIndex':'1200'});
         }
     }
 
