@@ -41,9 +41,13 @@ function replaceAllSelect2(force = false){
         || elements[i].id == 'deal_contact_id'
         || elements[i].id == 'available_c'
         || elements[i].id == 'selected_c'
-	|| elements[i].id == 'available_columns'
-	|| elements[i].id == 'selected_columns'
-	|| elements[i].id == 'time_entry_activity_id') {
+        || elements[i].id == 'available_columns'
+        || elements[i].id == 'selected_columns'
+        || elements[i].id == 'time_entry_activity_id'
+        || elements[i].id == 'relation_relation_type'
+        || elements[i].id == 'modal_selectoradd_filter_select'
+        || elements[i].id == 'modal_selectoroperators_project_id'
+        || elements[i].id == 'modal_selectoroperators_status_id') {
             continue;
         }
 
